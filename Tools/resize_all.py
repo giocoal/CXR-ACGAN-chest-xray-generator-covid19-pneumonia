@@ -4,7 +4,7 @@ from PIL import Image
 
 def resize_im(path):
     if os.path.isfile(path):
-        im = Image.open(path).resize((224,224), Image.ANTIALIAS)
+        im = Image.open(path).resize((112,112), Image.ANTIALIAS)
         parent_dir = os.path.dirname(path)
         img_name = os.path.basename(path).split('.')[0]
         os.remove(path)
@@ -25,5 +25,5 @@ def resize_all(mydir):
     print(f"Total unsuccessful: {count_failed}")
                 
 if __name__ == '__main__':
-    resize_all("./Data/COVIDx-splitted")
+    resize_all("C:/Users/marco/Desktop/Local_Documents/data/COVIDx-nosplit-resized-112")
     
