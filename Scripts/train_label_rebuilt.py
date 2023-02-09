@@ -12,6 +12,6 @@ def create_image_label_file(img_folder_path, label_file_path):
                         f.write(f"{image} {folder}\n")
 
 if __name__ == '__main__':
-    img_folder_path = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112/train'
-    label_file_path = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-nosplit-resized-112/train_COVIDx9A_rebuilt.txt'
+    img_folder_path = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112_augm/train'
+    label_file_path = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112_augm/train_COVIDx9A_rebuild.txt'
     create_image_label_file(img_folder_path, label_file_path)
