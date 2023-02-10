@@ -5,7 +5,7 @@ import numpy as np
 
 def generate_images(directory, class_folder, save_directory, total_images, batch_size):
     
-    # Creazione di un ImageDataGenerator
+    # Data augmentation function
     datagen = ImageDataGenerator(
                                 rotation_range=10,
                                 width_shift_range=0.1,
@@ -16,7 +16,7 @@ def generate_images(directory, class_folder, save_directory, total_images, batch
                                 fill_mode='constant',
                                 cval=0.)
     
-    # Caricamento delle immagini della classe
+    # Load the images for each class
     generator = datagen.flow_from_directory(
                                             directory,
                                             target_size=(112, 112),
@@ -25,7 +25,7 @@ def generate_images(directory, class_folder, save_directory, total_images, batch
                                             batch_size= batch_size,
                                             shuffle=False)
     
-    # Generazione delle nuove immagini e salvataggio su disco
+    # Loop for generate images starting from 'generator' and using 'datagen'
     i = 0
     for batch in generator:
         if i + batch_size > total_images:
@@ -36,16 +36,23 @@ def generate_images(directory, class_folder, save_directory, total_images, batch
         file_name = os.path.basename(file_path)
         save_path = f"{save_directory}/{os.path.splitext(file_name)[0]}_aug_{i}.png"
         cv2.imwrite(save_path, x[0])
+        print(i, save_path)
 
 
 if __name__ == '__main__':
 
-    #Normal
-    dir_input_normal = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112\\train\\'
-    dir_output_normal = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112\\normal_aug'
-    generate_images(dir_input_normal, "normal", dir_output_normal, 8405, 1)
+    '''
+    For the input directory, enter the path main: dataset/train/
 
-    #Pneuomia
-    dir_input_pneumonia = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112\\train\\'
-    dir_output_pneuomina = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112\\pneumonia_aug'
-    generate_images(dir_input_pneumonia, "pneumonia", dir_output_pneuomina, 11110, 2)
+    For the output directory, enter the folder-specific path: dataset_aug/train/classes/
+    '''
+
+    #Normal
+    dir_input_normal = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112-process-augm/train/'
+    dir_output_normal = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112-process-augm/train/normal'
+    generate_images(dir_input_normal, "normal", dir_output_normal, 7689, 1)
+
+    # #Pneuomia
+    # dir_input_pneumonia = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112-process/train/'
+    # dir_output_pneuomina = 'C:/Users/marco/Desktop/Local_Documents/data/COVIDx-splitted-resized-112-process-augm/train/pneumonia'
+    # generate_images(dir_input_pneumonia, "pneumonia", dir_output_pneuomina, 3, 1)

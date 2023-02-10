@@ -5,15 +5,15 @@ import glob2 as glob
 import pandas as pd
 
 '''
-Le seguenti funzioni implementano l'alogiritmo Adaptive Gamma Correction:
+The following functions implement the Adaptive Gamma Correction halo:
 
-La funzione image_agcwd è il cuore dell'Adaptive Gamma Correction. La funzione riceve un'immagine e i parametri a e truncated_cdf, 
-che determinano la forma della correzione. La funzione calcola l'istogramma dell'immagine, normalizza la distribuzione cumulativa 
-e la distribuzione di probabilità. Poi esegue una trasformazione sulla distribuzione di probabilità, calcola la distribuzione cumulativa inversa 
-e la utilizza per correggere la luminosità dell'immagine.
+The image_agcwd function is the heart of Adaptive Gamma Correction. The function receives an image and the parameters a and truncated_cdf, 
+which determine the shape of the correction. The function calculates the histogram of the image, normalises the cumulative distribution 
+and the probability distribution. It then performs a transformation on the probability distribution, calculates the inverse cumulative distribution 
+and uses it to correct the brightness of the image.
 
-Infine, le funzioni process_bright e process_dimmed invocano la funzione image_agcwd con i parametri opportuni per elaborare 
-le immagini luminose e oscure, rispettivamente.
+Finally, the process_bright and process_dimmed functions invoke the image_agcwd function with the appropriate parameters to process 
+the bright and dark images, respectively
 
 '''
 
@@ -61,7 +61,7 @@ def process_dimmed(img):
 
 
 '''
-This function applies the Adaptive Gamma Correction over the whole train dataset
+This function applies the Adaptive Gamma Correction over the whole test dataset
 '''
 
 def apply_AGCWD(input_dir, output_dir):
@@ -104,26 +104,34 @@ def apply_AGCWD(input_dir, output_dir):
             # print('None')
             img_output = img
             img_output = cv2.cvtColor(img_output, cv2.COLOR_BGR2GRAY)
-
+        
         cv2.imwrite(output_dir+name+'.png', img_output)
-    print("Numero totale di immagini processate: {}".format(total_count))
-    print("Numero di immagini dimmed: {}".format(dimmed_count))
-    print("Numero di immagini brighted: {}".format(brighted_count))
+        # print(total_count, output_dir)
+    print("Total number of processed images: {}".format(total_count))
+    print("Total number of processed dimmed images: {}".format(dimmed_count))
+    print("Total number of processed brighted images: {}".format(brighted_count))
     return
 
 if __name__ == '__main__':
-    os.chdir('C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112')
+    '''
+    Set the main path for both original and processed datasets : ./dataset 
+    Input and output paths must be set for each class
+    '''
+    input_dir = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112-process-enanch-augm'
+    # output_dir = 'C:\\Users\\marco\\Desktop\\Local_Documents\\data\\COVIDx-splitted-resized-112-process-enanch-augm'
+
+
     # COVID-19 images
-    input_dir_covid = '.\\train\\COVID-19'
-    output_dir_covid = '.\\train_agc\\COVID-19'
+    input_dir_covid = os.path.join(input_dir,'test\\COVID-19\\')
+    # output_dir_covid = os.path.join(output_dir, 'test\\COVID-19\\')
     apply_AGCWD(input_dir=input_dir_covid, output_dir=input_dir_covid)
 
-    # Normal images
-    input_dir_normal = '.\\train\\normal'
-    output_dir_normal = '.\\train_agc\\normal'
-    apply_AGCWD(input_dir=input_dir_normal, output_dir=output_dir_normal)
+    # # Normal images
+    input_dir_normal = os.path.join(input_dir, 'test\\normal\\')
+    # output_dir_normal = os.path.join(output_dir, 'test\\normal\\')
+    apply_AGCWD(input_dir=input_dir_normal, output_dir=input_dir_normal)
 
     # Pneumonia images
-    input_dir_pneumonia = '.\\train\\pneumonia'
-    output_dir_pneumonia = '.\\train_agc\\pneumonia'
-    apply_AGCWD(input_dir=input_dir_pneumonia, output_dir=output_dir_pneumonia)
+    input_dir_pneumonia = os.path.join(input_dir, 'test\\pneumonia\\')
+    # output_dir_pneumonia = os.path.join(input_dir, 'test\\pneumonia\\')
+    apply_AGCWD(input_dir=input_dir_pneumonia, output_dir=input_dir_pneumonia)
