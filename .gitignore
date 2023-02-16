@@ -5,6 +5,10 @@ Data/COVIDx-splitted-resized/test
 Data/COVIDx-splitted-resized/train
 Data/COVIDx-splitted-resized-112/test
 Data/COVIDx-splitted-resized-112/train
+Data/COVIDx-splitted-resized-112-clean/train
+Data/COVIDx-splitted-resized-112-clean/test
+Data/COVIDx-splitted-resized-112-alt/train
+Data/COVIDx-splitted-resized-112-alt/test
 Data/COVIDx-splitted-resized-128/test
 Data/COVIDx-splitted-resized-128/train
 Report
