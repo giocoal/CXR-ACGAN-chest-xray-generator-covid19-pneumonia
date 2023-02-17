@@ -26,7 +26,7 @@ The objective of this project is to train an auxiliary classifier GAN (AC-GAN) t
 
 ## Requirements
 
-- python 3.8
+- pytho==3.8
 - ipython
 - ipykernel
 - matplotlib
