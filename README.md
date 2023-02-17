@@ -9,7 +9,7 @@
 
 ## Table of contents
 * [Abstract](#abstract)
-* [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534)
+* [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255905299)
 * [Requirements](#requirements)
 * [COVIDx CXR-3: Dataset and Image Pre-processing](#covidx-cxr-3-dataset-and-image-pre-processing)
 * [AC-GAN Training and Generation](#ac-gan-training-and-generation)
