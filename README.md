@@ -9,7 +9,7 @@
 
 ## Table of contents
 * [Abstract](#abstract)
-* [Paper](https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/blob/main/Paper/Paper%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf) and [Slides](https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/blob/main/Paper/Slides%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf)
+* [Paper](https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/main/Paper/Paper%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf) and [Slides](https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/main/Paper/Slides%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf)
 * [Requirements](#requirements)
 * [TLDRHQ: Data and Text Pre-processing](#tldrhq-data-and-text-pre-processing)
 * [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
@@ -314,13 +314,13 @@ project_folder
 
 
 ## License
-* >You can check out the full license [here](https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/blob/main/README.md)
+* >You can check out the full license [here](https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/main/README.md)
 
 This project is licensed under the terms of the **MIT** license.
 
 ## Contributing
 
-1. Fork it (<https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling.git>)
+1. Fork it (<https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.git>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
@@ -343,16 +343,16 @@ This project is licensed under the terms of the **MIT** license.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/giocoal/reddit-tldr-summarizer-and-topic-modeling.svg?style=for-the-badge
-[contributors-url]: https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/giocoal/reddit-tldr-summarizer-and-topic-modeling.svg?style=for-the-badge
-[forks-url]: https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/network/members
-[stars-shield]: https://img.shields.io/github/stars/giocoal/reddit-tldr-summarizer-and-topic-modeling.svg?style=for-the-badge
-[stars-url]: https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/stargazers
-[issues-shield]: https://img.shields.io/github/issues/giocoal/reddit-tldr-summarizer-and-topic-modeling.svg?style=for-the-badge
-[issues-url]: https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/issues
-[license-shield]: https://img.shields.io/github/license/giocoal/reddit-tldr-summarizer-and-topic-modeling.svg?style=for-the-badge
-[license-url]: https://github.com/giocoal/reddit-tldr-summarizer-and-topic-modeling/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.svg?style=for-the-badge
+[contributors-url]: https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.svg?style=for-the-badge
+[forks-url]: https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/network/members
+[stars-shield]: https://img.shields.io/github/stars/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.svg?style=for-the-badge
+[stars-url]: https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/stargazers
+[issues-shield]: https://img.shields.io/github/issues/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.svg?style=for-the-badge
+[issues-url]: https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/issues
+[license-shield]: https://img.shields.io/github/license/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator.svg?style=for-the-badge
+[license-url]: https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/giorgio-carbone-63154219b/
 [product-screenshot]: images/screenshot.png
