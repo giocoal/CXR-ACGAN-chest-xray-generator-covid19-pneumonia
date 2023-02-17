@@ -10,9 +10,8 @@
 ## Table of contents
 * [Abstract](#abstract)
 * [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534)
-* 
 * [Requirements](#requirements)
-* [TLDRHQ: Data and Text Pre-processing](#tldrhq-data-and-text-pre-processing)
+* [COVIDx CXR-3: Dataset and Image Pre-processing](#covidx-cxr-3-dataset-and-image-pre-processing)
 * [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
 * [Topic Modeling](#topic-modeling-task)
 * [Status](#status)
@@ -26,90 +25,63 @@ The objective of this project is to train an auxiliary classifier GAN (AC-GAN) t
 
 ## Requirements
 
-- python 3.10.7
-- contractions==0.1.73
-- gensim==4.3.0
-- ipython==8.8.0
-- matplotlib==3.6.3
-- nltk==3.8.1
-- num2words==0.5.12
-- numpy==1.22.1
-- pandas==1.3.5
-- seaborn==0.12.2
-- simplemma==0.9.0
-- spacy==3.4.4
-- swifter==1.3.4
-- textblob==0.17.1
+- python 3.8
+- ipython
+- ipykernel
+- matplotlib
+- pandas
+- seaborn
 - tqdm==4.64.1
 - scikit-learn==1.2.0
-- rouge-score==0.1.2
-- imbalanced-learn==0.10.1
-- wordcloud==1.8.2.2
-- pyLDAvis==3.3.1
+- glob2==0.7
+- keras==2.10.0
+- Keras-Preprocessing==1.1.2
+- numpy==1.24.2
+- opencv_python==4.7.0.68
+- pandas==1.5.3
+- Pillow==9.4.0
+- imageio==2.25.0
 
-## TLDRHQ: Data and Text Pre-processing
-
-### Step 0. Prepare Folders
-
-First of all, create three empty folders: `./DatasetTLDRHQ`,`./ProcessedData` and `./Dataset_splitted`.
+## COVIDx CXR-3: Dataset and Image Pre-processing
 
 ### Step 1. Download and extract the dataset
 
-Download annotations from the [official Google Drive Folder](https://drive.google.com/file/d/1jCi0Mn0k-pid5SSTafov11-e1A9LEZed/view?usp=sharing) and extract them in `./DatasetTLDRHQ`, resulting in a folder tree like this:
+Download COVID-x CXR-3 from the [official Kaggle Folder](https://www.kaggle.com/datasets/andyczhao/covidx-cxr2?select=competition_test) and extract `train` and `test` folders in `./Data/COVIDx/`, resulting in a folder tree like this:
 
 ```
 project_folder
-└───Dataset_TLDRHQ
-    ├───dataset-m0
-    ├───dataset-m1
-    ├───dataset-m2
-    ├───dataset-m2021
-    ├───dataset-m3
-    ├───dataset-m4
-    └───dataset-m6
+└───Data
+    ├───COVIDx
+    |    ├───test_COVIDx9A.txt
+    |    ├───train_COVIDx9A.txt
+    |    ├───train
+    |    └───test
+    ├───COVIDx-splitted-resized-112
+    ├─── ...
 ```
 
-### Step 2. Perform data cleaning and splitting of the dataset
-Run the `0_cleaning.py` script which will perform data cleaning (removing duplicates), splits the dataset into training/validation and test sets (splitting the training set so that it is easier to manage) and then save it splitted into `.JSON` files in `./Dataset_splitted`. You get a directory tree like this:
+### Step 2. Perform class splitting of the dataset
+Run the `./Data/train_test_class_split.sh` bash script which will subdivide the training and testing images within the COVIDx-splitted-resized-112 folder according to their class. So that we can then use `flow_from_directory`. You get a directory tree like this:
 ```
 project_folder
-└───Dataset_splitted
-    ├───test.json
-    ├───train_1.json
-    ├───train_10.json
-    ├───train_2.json
-    ├───train_3.json
-    ├───train_4.json
-    ├───train_5.json
-    ├───train_6.json
-    ├───train_7.json
-    ├───train_8.json
-    ├───train_9.json
-    └───val.json
+└───Data
+    ├───COVIDx
+    ├───COVIDx-splitted-resized-112
+    |    ├───test_COVIDx9A.txt
+    |    ├───train_COVIDx9A.txt
+    |    ├───train
+    |    |   ├───COVID-19
+    |    |   ├───normal
+    |    |   └───pneumonia
+    |    └───test
+    ├─── ...
 ```
 
 
-### Step 3. Perform text pre-processing on the dataset
-Run the `0_normalizing.py` script which will perform senteces splitting, text normalization, tokenization, stop-words removal, lemmatization and POS tagging on `document` variable, containing reddit posts. Then save it splitted into various `.JSON` files in `./ProcessedData`. You get a directory tree like this:
-```
-project_folder
-└───ProcessedData
-    ├───test.json
-    ├───train_1.json
-    ├───train_10.json
-    ├───train_2.json
-    ├───train_3.json
-    ├───train_4.json
-    ├───train_5.json
-    ├───train_6.json
-    ├───train_7.json
-    ├───train_8.json
-    ├───train_9.json
-    └───val.json
-```
-The text normalisation operations performed include, in order: Sentence Splitting, HTML tags and entities removal, Extra White spaces Removal, URLs Removal, Emoji Removal, User Age Processing (e.g. 25m becomes 25 male), Numbers Processing, Control Characters Removal, Case Folding, Repeated characters processing (e.g. reallllly becomes really), Fix and Expand English contradictions, Special Characters and Punctuation Removal, Tokenization (Uni-Grams), Stop-Words and 1-character tokens, Lemmatization and POS tagging.
+### Step 3. (Opt) Perform images resizing to 112 x 122
+This step is intended to reduce the size of the dataset. It is not essential because resizing is also performed in the training phase. Run the `./Data/resize_all.py` script.
 
-## Extreme Extractive Summarization task
+## AC-CGAN Training
 
 ### Step 0. Split and clean 'ProcessedData' for easy management
 Run notebook `1_preprocessing4summarization.ipynb` in order to:
