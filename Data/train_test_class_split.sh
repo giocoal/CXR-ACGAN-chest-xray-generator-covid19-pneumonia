@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Crea la cartella COVIDx-splitted
-mkdir -p COVIDx-splitted
+mkdir -p COVIDx-splitted-resized-112
 
 # Crea le cartelle per le classi all'interno di COVIDx-splitted/train
-cd COVIDx-splitted
+cd COVIDx-splitted-resized
 mkdir -p train
 cd train
 mkdir -p pneumonia COVID-19 normal
@@ -24,7 +24,7 @@ while read line; do
   class=$(echo $line | awk '{print $3}')
 
   # Copia l'immagine nella cartella giusta
-  cp -n COVIDx/train/$filename COVIDx-splitted/train/$class/$filename
+  cp -n COVIDx/train/$filename COVIDx-splitted-resized/train/$class/$filename
 done < COVIDx/train_COVIDx9A.txt
 
 # Sostituisci i nomi delle immagini nel nuovo file train_COVIDx9A.txt
@@ -35,7 +35,7 @@ while read line; do
   class=$(echo $line | awk '{print $3}')
   other=$(echo $line | awk '{print $4}')
 
-  echo "$index $class/$filename $class $other" >> COVIDx-splitted/train_COVIDx9A.txt
+  echo "$index $class/$filename $class $other" >> COVIDx-splitted-resized/train_COVIDx9A.txt
   
 done < COVIDx/train_COVIDx9A.txt
 
@@ -52,7 +52,7 @@ while read line; do
   filename=$(echo $line | awk '{print $2}')
   class=$(echo $line | awk '{print $3}')
 
-  cp -n COVIDx/test/$filename COVIDx-splitted/test/$class/$filename
+  cp -n COVIDx/test/$filename COVIDx-splitted-resized/test/$class/$filename
 
   echo "$COUNTER"
   COUNTER=$((COUNTER+1))
@@ -66,5 +66,5 @@ while read line; do
   class=$(echo $line | awk '{print $3}')
   other=$(echo $line | awk '{print $4}')
 
-  echo "$index $class/$filename $class $other" >> COVIDx-splitted/test_COVIDx9A.txt
+  echo "$index $class/$filename $class $other" >> COVIDx-splitted-resized/test_COVIDx9A.txt
 done < COVIDx/test_COVIDx9A.txt

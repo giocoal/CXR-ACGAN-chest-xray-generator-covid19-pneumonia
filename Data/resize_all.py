@@ -25,5 +25,5 @@ def resize_all(mydir):
     print(f"Total unsuccessful: {count_failed}")
                 
 if __name__ == '__main__':
-    resize_all("./Data/COVIDx-splitted")
+    resize_all("./COVIDx-splitted-resized-112")
     
