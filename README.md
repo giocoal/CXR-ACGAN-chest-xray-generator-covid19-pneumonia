@@ -14,7 +14,7 @@
 * [COVIDx CXR-3: Dataset and Image Pre-processing](#covidx-cxr-3-dataset-and-image-pre-processing)
 * [AC-GAN Training and Generation](#ac-gan-training-and-generation)
 * [AC-GAN Evaluation: FID, Intra FID, Inception Score (IS), t-SNE](#ac-gan-evaluation-fid-intra-fid-inception-score-is-t-SNE)
-* [Chest X-ray Classification](#extreme-extractive-summarization-task)
+* [Chest X-Ray Classification: Pneumonia and COVID-19 detection with GAN augmentation](#chest-x-ray-classification-pneumonia-and-covid-19-detection-with-gan-augmentation)
 * [Status](#status)
 * [Contact](#contact)
 * [License](#license)
@@ -95,6 +95,10 @@ Run the code and follow the detailed instructions in `AC-cGAN-evaluate.ipynb` to
 - Calculate the **Intra Fréchet inception distance (Intra FID)**
 - Calculate the **Inception Score (IS)**
 - View **t-SNE two-dimensional embeddings**
+
+## Chest X-Ray Classification: Pneumonia and COVID-19 detection with GAN Augmentation
+
+Use the notebooks in `CXR Classification` folder to train and evaluate classification models for the detection of COVID-19, Pneumonia and Absence of symptoms in Chest X-ray. Some forms of data augmentation are tested, including generation by trained AC-GAN. 
 
 ## Status
 
