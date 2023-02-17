@@ -127,8 +127,8 @@ This project is licensed under the terms of the **MIT** license.
 # Contributors
 
 * [Giorgio Carbone](https://github.com/giocoal)
-* [Marco Scatassi](https://github.com/marco-scatassi)
-* [Gianluca Scuri](https://github.com/gianscuri)    
+* [Remo Marconzini](https://github.com/rmarconzini)
+* [Gianluca Cavallaro](https://github.com/Gianluca124)    
 
 <!-- Project is: ![##c5f015](https://via.placeholder.com/15/c5f015/000000?text=+)  _Done_
  Project is: ![##ff0000](https://via.placeholder.com/15/ff0000/000000?text=+)  _Under-Proccess_
