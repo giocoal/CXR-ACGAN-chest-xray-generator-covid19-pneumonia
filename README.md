@@ -9,7 +9,7 @@
 
 ## Table of contents
 * [Abstract](#abstract)
-* [Report](https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/main/Paper/Paper%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf) and [Slides](https://github.com/giocoal/CXR-ACGAN-chest-Xray-COVID-19-pneumonia-generator/blob/main/Paper/Slides%20-%20Text%20Summarization%20and%20Topic%20Modeling%20over%20Reddit%20Posts.pdf)
+* [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients)
 * [Requirements](#requirements)
 * [TLDRHQ: Data and Text Pre-processing](#tldrhq-data-and-text-pre-processing)
 * [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
