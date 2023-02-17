@@ -22,7 +22,9 @@
 
 ## Abstract
 
-The objective of this project is to train an auxiliary classifier GAN (AC-GAN) to generate chest X-rays of healthy patients, COVID-19 patients, and non-COVID-19 pneumonia patients. Additionally, we use the GAN for data augmentation on the unbalanced COVIDx dataset to balance the minority classes and improve the performance of classifiers. The resulting generative model will enable the synthesis of conditionally generated chest X-rays, with potential applications in medical research and diagnostics. The GAN is trained directly on COVIDx CXR-3 dataset with simple preprocessing and positional data augmentation.
+Our project involved training a model for conditional image generation of chest X-rays using an AC-GAN architecture.
+The main objective was to train an Auxiliary Classifier GAN (AC-GAN) to obtain a model for the conditional synthesis of chest radiographs of healthy patients, patients with COVID-19 and patients with non-COVID-19 pneumonia. Additionally, we used the trained GAN to perform data augmentation on the unbalanced COVIDx dataset, generatively balancing minority classes, and possibly improving the performance of some classifiers.
+The resulting generative model will enable the synthesis of conditionally generated chest X-rays, with potential applications in medical research and diagnostics. The GAN is trained directly on COVIDx CXR-3 dataset with simple preprocessing and positional data augmentation.
 
 ## Requirements
 
