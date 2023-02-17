@@ -1,4 +1,4 @@
-# CXR-ACGAN: Auxiliary Classifier GAN (AC-GAN) for Conditional Generation of Chest X-Ray Images (Pneumonia, COVID-19 and normal patients).
+# CXR-ACGAN: Auxiliary Classifier GAN (AC-GAN) for Conditional Generation of Chest X-Ray Images (Pneumonia, COVID-19 and Healthy patients) for the purpose of data augmentation.
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
