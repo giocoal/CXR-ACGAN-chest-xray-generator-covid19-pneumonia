@@ -12,8 +12,9 @@
 * [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534)
 * [Requirements](#requirements)
 * [COVIDx CXR-3: Dataset and Image Pre-processing](#covidx-cxr-3-dataset-and-image-pre-processing)
-* [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
-* [Topic Modeling](#topic-modeling-task)
+* [AC-GAN Training and Generation](#ac-gan-training-and-generation)
+* [AC-GAN Evaluation: FID, Intra FID, Inception Score (IS), t-SNE](#ac-gan-evaluation-fid-intra-fid-inception-score-is-t-SNE)
+* [Chest X-ray Classification](#extreme-extractive-summarization-task)
 * [Status](#status)
 * [Contact](#contact)
 * [License](#license)
@@ -81,185 +82,19 @@ project_folder
 ### Step 3. (Opt) Perform images resizing to 112 x 122
 This step is intended to reduce the size of the dataset. It is not essential because resizing is also performed in the training phase. Run the `./Data/resize_all.py` script.
 
-## AC-CGAN Training
+## AC-GAN Training and Generation
 
-### Step 0. Split and clean 'ProcessedData' for easy management
-Run notebook `1_preprocessing4summarization.ipynb` in order to:
-- remove document without summary
-- remove document with a single sentence
-- split train dataset 
+1. Run the code and follow the detailed instructions in `AC-cGAN-training.ipynb` to perform AC-GAN training.
+2. Generates images in large quantities using `AC-cGAN-generator.ipynb`.
 
-```
-project_folder
-└───Processed Data For Summarization
-    ├───test_0.json
-    ├───test_1.json
-    ├───test_2.json
-    ├───train_1_0.json
-    ├───train_1_1.json
-    ├───train_1_2.json
-    ├───train_2_0.json
-    ├───train_2_1.json
-    ├───train_2_2.json
-    ├───  ...
-    ├───train_8_0.json
-    ├───train_8_1.json
-    ├───train_8_2.json
-    ├───train_9_0.json
-    ├───val_0.json
-    ├───val_1.json
-    └───val_2.json
-```
+## AC-GAN Evaluation: FID, Intra FID, Inception Score (IS), t-SNE
 
-### Step 1. Create a feature matrix for each of the JSON in 'Processed Data For Summarization'
-Run `1_featureMatrixGeneration.py` obtaining feature matrices (sentences x features). You get a directory tree like this:
-
-```
-project_folder
-└───Feature Matrices
-    ├───test_0.csv
-    ├───test_1.csv
-    ├───test_2.csv
-    ├───train_1_0.csv
-    ├───train_1_1.csv
-    ├───train_1_2.csv
-    ├───train_2_0.csv
-    ├───train_2_1.csv
-    ├───train_2_2.csv
-    ├───  ...
-    ├───train_8_0.csv
-    ├───train_8_1.csv
-    ├───train_8_2.csv
-    ├───train_9_0.csv
-    ├───val_0.csv
-    ├───val_1.csv
-    └───val_2.csv
-```
-    
- Run the notebook `1_featureMatrixGeneration2.ipynb` to join train, val and test datasets. You get a directory tree like this:
- 
- ```
- project_folder
- └───Feature Matrices
-    ├───test_0.csv
-    ├───test_1.csv
-    ├───test_2.csv
-    ├───train_1_0.csv
-    ├───train_1_1.csv
-    ├───train_1_2.csv
-    ├───train_2_0.csv
-    ├───train_2_1.csv
-    ├───train_2_2.csv
-    ├───  ...
-    ├───train_8_0.csv
-    ├───train_8_1.csv
-    ├───train_8_2.csv
-    ├───train_9_0.csv
-    ├───val_0.csv
-    ├───val_1.csv
-    ├───val_2.csv
-    ├───test.csv
-    ├───train.csv
-    └───val.csv
-```
-    
-Features generated at this step are the following:
-- sentence_relative_positions
-- sentence_similarity_score_1_gram
-- word_in_sentence_relative
-- NOUN_tag_ratio
-- VERB_tag_ratio
-- ADJ_tag_ratio
-- ADV_tag_ratio
-- TF_ISF
- 
-    
-### Step 2. Perform CUR undersampling
-Run notebook `1_featureMatrixUndersampling.ipynb` in order to perform CUR undersampling on both train and validation data sets. You get a directory tree like this:
-
-```
-project_folder
-└───Undersampled Data
-    ├───trainAndValMinorityClass.csv
-    └───trainAndValMajorityClassUndersampled.csv
-```
-
-Majority and minority class are splitted because CUR undersampling works only on the majority class
-
-### Step 3. Perform EditedNearestNeighbours(ENN) undersamplig
-Run notebook `1_featureMatrixAnalysis.ipynb` to perform EEN undersampling. You get a directory tree like this:
-
-```
-project_folder
-└───Undersampled Data
-    ├───trainAndValUndersampledENN3.csv
-    ├───trainAndValMinorityClass.csv
-    └───trainAndValMajorityClassUndersampled.csv
-```
-
-### Step 4. Machine Learning model selection and evaluation
-Run notebook `1_featureMatrixAnalysis.ipynb` to perform a RandomizedSearcCV over the following models
-- RandomForestClassifier
-- LogisticRegression
-- HistGradientBoostingClassifier
-
-with a few possible parameters configuration. 
-
-Then, evaluate the resulting best model on the test set with respect to:
-- ROC curve
-- Recall
-- Precision
-- Accuracy
-
-### Step 5. Perform Maximal Marginal Relevance(MMR) selection
-Run notebook `1_featureMatrixAnalysis.ipynb` to perform MMR and obtain an extractive summary for each document in the test set.
-
-### Step 6. Summary Evaluation
-Run notebook `1_featureMatrixAnalysis.ipynb` to measure summaries quality by means of 
-- Rouge1
-- Rouge2 
-- RougeL 
-
-## Topic Modeling task
-### Step 0. Perform preprocessing
-Run the `2_preprocessing4topic_modeling.ipynb` script to process and extract only the useful data. The output is saved here:
-
-```
-project_folder
-└───processed_dataset
-    ├───test.json
-```
-
-### Step 1. Perform topic modeling on the test set
-Run the `2_topic_modeling.ipynb` script which will perform LDA (with grid search of the best hyper-parameters) and LSA. The script saves 9 CSV files, 3 for LSA and 6 for LDA (UMass and CV coherence measures), containing: document-topic matrix, topic-term matrix and a table with topic insights.
-
-```
-project_folder
-└───Results_topic_modeling
-    ├───lda_doc_topic.csv
-    ├───lda_doc_topic_CV.csv
-    ├───lda_top_terms.csv
-    ├───lda_top_terms_CV.csv
-    ├───lda_topic_term.csv
-    ├───lda_topic_term_cv.csv
-    ├───lsa_doc_topic.csv
-    ├───lsa_top_terms.csv
-    ├───lsa_topic_term.csv
-```
-Saves images regarding the number of words per document and wordcloud in
-
-```
-project_folder
-└───Images
-```
-
-Saves hyperparameters grid search results for UMass and CV coherence in
-```
-project_folder
-└───Hyperparameters
-    ├───tuning.csv
-    ├───tuning_CV.csv
-```
+Run the code and follow the detailed instructions in `AC-cGAN-evaluate.ipynb` to:
+- Displaying training metrics (**Losses and Accuracies**)
+- Calculate **Fréchet inception distance (FID)**
+- Calculate the **Intra Fréchet inception distance (Intra FID)**
+- Calculate the **Inception Score (IS)**
+- View **t-SNE two-dimensional embeddings**
 
 ## Status
 
