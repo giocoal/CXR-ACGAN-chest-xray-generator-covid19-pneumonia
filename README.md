@@ -10,6 +10,7 @@
 ## Table of contents
 * [Abstract](#abstract)
 * [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534)
+* 
 * [Requirements](#requirements)
 * [TLDRHQ: Data and Text Pre-processing](#tldrhq-data-and-text-pre-processing)
 * [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
@@ -21,22 +22,7 @@
 
 ## Abstract
 
-Reddit is a social news aggregation and discussion website where users post content (such as links, text posts,
-images, and videos) on a wide range of topics in domain-specific boards called ”communities” or ”subreddits.”
-The following project aims to implement text summarization and topic modelling pipelines on the textual
-content of Redditors’ posts. The dataset used to achieve these goals is the Reddit-based TL;DR summarization
-dataset TLDRHQ containing approximately 1.7 million Reddit posts (submissions as well as comments)
-obtained through scraping techniques. Each instance in the dataset includes a Reddit post and its TL;DR, which
-is an acronym for ”Too Long; Didn’t Read” and is an extremely short summary of the post’s content that is good
-practice for users to leave at the end of a post. While the Reddit usage has increased, the practice of write TL;DR
-didn’t keep the pace. In this context, a system (such as a bot) capable to automatically generate the TL;DR of
-a post could improve Reddit usability. However, the high abstractivity, heterogeneity and noisy of posts make
-the text summarization task challenging. In this work a supervised extreme extractive summarization model
-is developed. Despite its lower complexity, results show that its performance are not so different with respect
-to the state of the art BertSumExt. Moreover the topic modeling analysis of the posts could be really useful in
-identifying the hidden topics in a post and evaluate if it’s published in the right subreddit. In this project LSA and
-LDA techniques are used. On this dataset LSA outperformed LDA and identified 20 well defined topics providing
-the respective document-topics and topic-terms matrices
+The objective of this project is to train an auxiliary classifier GAN (AC-GAN) to generate chest X-rays of healthy patients, COVID-19 patients, and non-COVID-19 pneumonia patients. Additionally, we use the GAN for data augmentation on the unbalanced COVIDx dataset to balance the minority classes and improve the performance of classifiers. The resulting generative model will enable the synthesis of conditionally generated chest X-rays, with potential applications in medical research and diagnostics. The GAN is trained directly on COVIDx CXR-3 dataset with simple preprocessing and positional data augmentation.
 
 ## Requirements
 
