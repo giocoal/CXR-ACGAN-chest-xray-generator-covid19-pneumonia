@@ -9,7 +9,7 @@
 
 ## Table of contents
 * [Abstract](#abstract)
-* [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients)
+* [Report](https://www.slideshare.net/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534/Giorgio469575/cxracgan-auxiliary-classifier-gan-for-conditional-generation-of-chest-xray-images-pneumonia-covid19-and-healthy-patients-255904534)
 * [Requirements](#requirements)
 * [TLDRHQ: Data and Text Pre-processing](#tldrhq-data-and-text-pre-processing)
 * [Extreme Extractive Text Summarization](#extreme-extractive-summarization-task)
