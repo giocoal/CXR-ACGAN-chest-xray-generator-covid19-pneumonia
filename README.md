@@ -30,7 +30,7 @@ The resulting generative model will enable the synthesis of conditionally genera
 
 ## Requirements
 
-- pytho==3.8
+- python==3.8
 - ipython
 - ipykernel
 - matplotlib
