@@ -41,6 +41,7 @@ The resulting generative model will enable the synthesis of conditionally genera
 - glob2==0.7
 - keras==2.10.0
 - Keras-Preprocessing==1.1.2
+- tensorflow==2.10.1
 - numpy==1.24.2
 - opencv_python==4.7.0.68
 - pandas==1.5.3
